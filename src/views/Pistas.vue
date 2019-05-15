@@ -1,20 +1,19 @@
 <template>
   <div class="container">
-    <ConfiguracionGenerator></ConfiguracionGenerator>
+    <PistasGenerator :numpistas="numpistas"></PistasGenerator>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import PistasGenerator from "@/components/PistasGenerator.vue";
-import ConfiguracionGenerator from "@/components/ConfiguracionGenerator.vue";
+import PistasGenerator from "@/components/PistasGenerator.vue";
 require("@/assets/sass/main.scss");
 
 export default {
-  name: "home",
+  name: "pistas",
+  props: ["numpistas"],
   components: {
-    // PistasGenerator,
-    ConfiguracionGenerator
+    PistasGenerator
   },
   data() {
     return {};
