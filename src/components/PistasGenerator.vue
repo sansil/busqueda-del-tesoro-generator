@@ -8,7 +8,7 @@
         <div class="field">
           <label class="label">Pista</label>
           <div class="control">
-            <input class="input" type="text" placeholder="pista" v-model="pista.pistaTexto">
+            <input class="input" type="text" placeholder="pista" v-model="pista.pista">
           </div>
           <p class="help">La pista que se va a mostrar en la app.</p>
         </div>
@@ -52,16 +52,22 @@
         <a class="button is-danger" @click="reset">Reiniciar</a>
       </div>
       <div v-else>
-        <div class="field">
+        <!-- <div class="field">
           <label class="label">Nombre del equipo</label>
           <div class="control">
             <input class="input" type="text" placeholder="nombre equipo" v-model="nombreEquipo">
           </div>
           <p class="help">Ejemplo: equipoRojo</p>
-        </div>
+        </div>-->
         <div class="buttons control">
-          <a class="button is-info" :href="jsonUrl" :download="nombreEquipo + '.json' ">Descargar</a>
-          <a class="button is-danger" @click="reset">Reiniciar</a>
+          <a class="button is-danger" :href="jsonUrl" download="grupoRojo.json">Descargar grupo Rojo</a>
+          <a
+            class="button is-success"
+            :href="jsonUrl"
+            download="grupoVerde.json"
+          >Descargar grupo Verde</a>
+          <a class="button is-info" :href="jsonUrl" download="grupoAzul.json">Descargar grupo Azul</a>
+          <a class="button is is-primary" @click="reset">Reiniciar</a>
         </div>
       </div>
     </div>
@@ -92,7 +98,7 @@ export default {
       nombreEquipo: "pistas",
       pista: {
         codigo: "",
-        pistaTexto: "",
+        pista: "",
         con_img: 0,
         img_url: "",
         footer: ""
@@ -101,16 +107,14 @@ export default {
       pistas: {}
     };
   },
-  mounted() {
-    console.log(this.numpistas);
-  },
+  mounted() {},
   methods: {
     goToHome() {
       this.$router.push("/");
     },
     reset() {
       this.pista.codigo = "";
-      this.pista.pistaTexto = "";
+      this.pista.pista = "";
       this.pista.con_img = 0;
       this.pista.img_url = "";
       this.pista.footer = "";
@@ -119,9 +123,9 @@ export default {
     addPista() {
       const newPista = {
         codigo: this.pista.codigo,
-        pistaTexto: this.pista.pistaTexto,
+        pista: this.pista.pista,
         con_img: this.pista.con_img,
-        img_url: this.pista.img_url,
+        img_url: encodeURIComponent(JSON.stringify(this.pista.img_url)),
         footer: this.pista.footer
       };
       this.pistas[this.contadorPistas] = newPista;
@@ -133,7 +137,7 @@ export default {
       this.contadorPistas++;
 
       this.pista.codigo = "";
-      this.pista.pistaTexto = "";
+      this.pista.pista = "";
       this.pista.con_img = 0;
       this.pista.img_url = "";
       this.pista.footer = "";
