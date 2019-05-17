@@ -12,6 +12,18 @@
           </div>
           <p class="help">La pista que se va a mostrar en la app.</p>
         </div>
+        <!-- <div class="field">
+          <label class="label">Título pista</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Titutlo pista"
+              v-model="pista.tituloPista"
+            >
+          </div>
+          <p class="help">La pista que se va a mostrar en la app.</p>
+        </div>-->
         <div class="field">
           <label class="label">Código</label>
           <div class="control">
@@ -98,6 +110,7 @@ export default {
       nombreEquipo: "pistas",
       pista: {
         codigo: "",
+        tituloPista: "",
         pista: "",
         con_img: 0,
         img_url: "",
@@ -118,6 +131,7 @@ export default {
       this.pista.con_img = 0;
       this.pista.img_url = "";
       this.pista.footer = "";
+      this.pista.tituloPista = "";
       this.contadorPistas = 0;
     },
     addPista() {
@@ -125,7 +139,7 @@ export default {
         codigo: this.pista.codigo,
         pista: this.pista.pista,
         con_img: this.pista.con_img,
-        img_url: encodeURIComponent(JSON.stringify(this.pista.img_url)),
+        img_url: encodeURIComponent(this.pista.img_url),
         footer: this.pista.footer
       };
       this.pistas[this.contadorPistas] = newPista;
@@ -141,6 +155,7 @@ export default {
       this.pista.con_img = 0;
       this.pista.img_url = "";
       this.pista.footer = "";
+      this.pista.tituloPista = "";
     }
   },
   watch: {

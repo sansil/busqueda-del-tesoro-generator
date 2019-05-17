@@ -1,5 +1,13 @@
 <template>
   <div class>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Busqueda del tesoro</h1>
+          <h2 class="subtitle">Generador de pistas</h2>
+        </div>
+      </div>
+    </section>
     <div class="field">
       <label class="label">Título</label>
       <div class="control">
